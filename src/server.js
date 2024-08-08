@@ -1,4 +1,3 @@
-
 import cors from 'cors';
 import express from 'express';
 import pino from 'pino-http';
@@ -28,7 +27,7 @@ const setupServer = () => {
     });
   });
 
-  app.use((err, _, res, _1) => {
+  app.use((err, _, res) => {
     res.status(500).json({ message: err.message });
   });
 
