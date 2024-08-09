@@ -9,7 +9,8 @@ const initMongoConnection = () => {
   const db = env('MONGODB_DB');
 
   mongoose
-    .connect(
+     .connect(
+    //   `mongodb+srv://${username}:${password}@${url}/${db}?retryWrites=true&w=majority&appName=cluster0`
       `mongodb+srv://${username}:${password}@${url}/${db}?retryWrites=true&w=majority&appName=cluster0`
     )
     .then(() => console.log('Mongo connection successfully established!'))
