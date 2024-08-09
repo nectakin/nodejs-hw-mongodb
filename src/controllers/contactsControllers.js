@@ -1,7 +1,7 @@
 import controllerWrapper from '../decorators/controllerWrapper.js';
 import contactService from '../services/contacts.js';
 
-const getAllContacts = async (req, res, next) => {
+const getAllContacts = async (req, res) => {
   const contacts = await contactService.getAll();
 
   res.status(200).json({
