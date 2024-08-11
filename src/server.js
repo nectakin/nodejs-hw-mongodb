@@ -1,3 +1,4 @@
+
 import cors from 'cors';
 import express from 'express';
 import pino from 'pino-http';
@@ -27,8 +28,11 @@ const setupServer = () => {
     });
   });
 
-  app.use((err, _, res) => {
-    res.status(500).json({ message: err.message });
+  app.use((err, req, res) => {
+    res.status(500).json({
+      message: 'Something went wrong',
+      error: err.message,
+    });
   });
 
   const PORT = Number(env('PORT'));
