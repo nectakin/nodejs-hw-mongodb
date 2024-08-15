@@ -1,8 +1,46 @@
 
-import Contact from './schemas/ContactSchema.js';
+import { ContactCollection } from '../db/models/contact.js';
 
-const getAll = () => Contact.find({});
+export const getAllContacts = async () => {
+  try {
+    const contacts = await ContactCollection.find();
+    console.log('Contacts:', contacts); 
+    return contacts;
+  } catch (error) {
+    console.error('Error fetching contacts:', error);
+    throw error;
+  }
+};
+export const getContactByID = async (contactId) => {
+  const contact = await ContactCollection.findOne({ _id: contactId });
+  return contact;
+};
 
-const getOneById = id => Contact.findById(id);
+export const createContacts = async (payload) => {
+  const contact = await ContactCollection.create(payload);
+  return contact;
+};
+export const updateContact = async (contactId, payload, options = {}) => {
+  const opaResult = await ContactCollection.findOneAndUpdate(
+    { _id: contactId },
+    payload,
+    {
+      new: true,
+      includeResultMetadata: true,
+      ...options,
+    },
+  );
+  if (!opaResult || !opaResult.value) return null;
 
-export default { getAll, getOneById };
+  return {
+    contact: opaResult.value,
+    isNew: Boolean(opaResult?.lastErrorObject?.upserted),
+  };
+};
+
+export const deleteContact = async (contactId) => {
+  const contact = await ContactCollection.findOneAndDelete({
+    _id: contactId,
+  });
+  return contact;
+};
