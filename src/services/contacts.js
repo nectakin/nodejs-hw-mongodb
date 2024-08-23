@@ -37,7 +37,7 @@ export const getAllContacts = async ({
     return { data: contacts, ...paginationData };
   } catch (error) {
     console.error('Error fetching contacts:', error);
-    throw error; // Или можно вернуть пустой массив []
+    throw error; 
   }
 };
 export const getContactByID = async (contactId) => {

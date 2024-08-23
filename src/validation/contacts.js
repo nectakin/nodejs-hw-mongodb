@@ -1,29 +1,3 @@
-/*
-import Joi from 'joi';
-
-export const createContactsSchema = Joi.object({
-  name: Joi.string().min(3).max(20).required(),
-  phoneNumber: Joi.string().pattern(/^\+?[0-9]{10,15}$/).messages({'string.pattern.base':'Phone number must be in the format: +1234567890'}).required(),
-  email: Joi.string().email().optional(),
-  isFavourite: Joi.boolean(),
-  contactType: Joi.string()
-
-    .valid('work', 'home', 'personal')
-    .required(),
-});
-
-export const updateContactsSchema = Joi.object({
-  name: Joi.string().min(3).max(20).required(),
-  phoneNumber: Joi.string()
-    .pattern(/^\+?[0-9]{10,15}$/)
-    .required(),
-  email: Joi.string().email().required(),
-  isFavourite: Joi.boolean(),
-  contactType: Joi.string()
-
-    .valid('work', 'home', 'personal')
-    .required(),
-}); */
 
 
 import Joi from 'joi';
