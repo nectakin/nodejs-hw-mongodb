@@ -8,7 +8,10 @@ import {
   registerUserController,
 } from '../controllers/auth.js';
 import { validateBody } from '../middleware/validateBody.js';
+import { authenticate } from '../middleware/authenticate.js';
 const router = Router();
+
+router.use(authenticate);
 
 router.post(
   '/register',
