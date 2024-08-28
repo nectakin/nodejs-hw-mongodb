@@ -1,3 +1,5 @@
+import dotenv from 'dotenv';
+dotenv.config();  // Завантаження змінних з .env файлу
 
 import { setupServer } from './server.js';
 import { createDirIfNotExists } from './utils/createDirIfNotExists.js';
