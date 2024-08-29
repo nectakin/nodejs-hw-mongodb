@@ -65,8 +65,9 @@ export const createContactController = async (req, res) => {
     }
     payload.photo = photoUrl;
   }
-  const contact = await createContacts(payload, userId);
-
+  
+  
+  const contact = await createContacts(payload, userId)
   res.status(201).json({
     status: 201,
     message: 'Successfully created a contact!',
@@ -103,6 +104,7 @@ export const patchContactController = async (req, res, next) => {
     data: result,
   });
 };
+
 export const deleteContactController = async (req, res, next) => {
   const userId = req.user._id;
   const { contactId } = req.params;
